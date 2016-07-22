@@ -18,8 +18,10 @@ class MyBaseWorker(swf.ActivityWorker):
             # Get input.
             # Get the method for the requested activity.
             try:
+                print activity_task.get('input')
                 print 'working on activity from tasklist %s at %i' % (self.task_list, time.time())
                 self.activity(activity_task.get('input'))
+
             except Exception as error:
                 self.fail(reason=str(error))
                 raise error
